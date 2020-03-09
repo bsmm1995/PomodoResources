@@ -72,7 +72,7 @@
     -->
     
     <!-- Run jUnit -->
-  <target name="junit" depends="resolve">
+  <target name="junit" depends="">
 
 	<junit printsummary="yes" haltonfailure="no">
 
