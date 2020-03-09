@@ -289,7 +289,7 @@ public final class frmMain extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ejecución", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
 
         lblTag.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         lblTag.setForeground(new java.awt.Color(255, 102, 102));
@@ -306,10 +306,7 @@ public final class frmMain extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(lblTag, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -371,7 +368,7 @@ public final class frmMain extends javax.swing.JFrame {
         }
         enableComponents(false);
         startCount();
-        setTextConsole("-> Start at: " + getCurrentDateTime());
+        setTextConsole("-> Inicio en: " + getCurrentDateTime());
     }//GEN-LAST:event_btnComenzarActionPerformed
     private void setTextConsole(String cade) {
         txtConsole.setText(txtConsole.getText() + cade + "\n");
@@ -384,7 +381,7 @@ public final class frmMain extends javax.swing.JFrame {
         pnlActivity newPnl = new pnlActivity(listPaneles.size() + 1, txtActivityName.getText());
         listPaneles.add(newPnl);
         updatePaneles();
-        txtConsole.setText(txtConsole.getText() + "-> Add: " + txtActivityName.getText() + " : " + getCurrentDateTime() + "\n");
+        txtConsole.setText(txtConsole.getText() + "-> Agregar: " + txtActivityName.getText() + " : " + getCurrentDateTime() + "\n");
     }//GEN-LAST:event_btnAddActivityActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
@@ -399,7 +396,7 @@ public final class frmMain extends javax.swing.JFrame {
             pnlActivities.updateUI();
             lblCronometroBreak.setText("00:00:00");
             lblCronometro.setText("00:00:00");
-            txtConsole.setText(txtConsole.getText() + "-> Finish at: " + getCurrentDateTime() + "\n");
+            txtConsole.setText(txtConsole.getText() + "-> Finalizó en: " + getCurrentDateTime() + "\n");
             enableComponents(true);
             objAudio.endAudio();
         } catch (BasicPlayerException e) {
@@ -411,7 +408,7 @@ public final class frmMain extends javax.swing.JFrame {
         if (index > 0) {
             listPaneles.remove(index - 1);
             updatePaneles();
-            txtConsole.setText(txtConsole.getText() + "-> Del activity " + index + " : " + getCurrentDateTime() + "\n");
+            txtConsole.setText(txtConsole.getText() + "-> Eliminar actividad: " + index + " : " + getCurrentDateTime() + "\n");
         }
     }//GEN-LAST:event_btnDeleteActivityActionPerformed
 
@@ -617,7 +614,10 @@ public final class frmMain extends javax.swing.JFrame {
         INT_MINUTE = 0;
         INT_SECOND = 0;
         sldVelocidad.setValue(0);
-        objTimer.setDelay(INT_MS);
+        try {
+            objTimer.setDelay(INT_MS);
+        } catch (Exception e) {
+        }
     }//Cierre del método resetValues
 
     /**
